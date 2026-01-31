@@ -23,7 +23,7 @@ public class Homepage {
     {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(2000));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 	
 //   For entering the place + pressing ENTER
@@ -34,3 +34,4 @@ public class Homepage {
         place1.sendKeys(place + Keys.ENTER);
     }
 }
+
