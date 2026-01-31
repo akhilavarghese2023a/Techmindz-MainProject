@@ -1,0 +1,36 @@
+package Page;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Homepage {
+		
+    WebDriver driver;
+    WebDriverWait wait;
+	
+    @FindBy(xpath ="//input[@placeholder='Search for Products, Brands and More']")
+    WebElement place1;
+
+    public Homepage(WebDriver driver)
+    {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(2000));
+    }
+	
+//   For entering the place + pressing ENTER
+    public void place(String place) 
+    {
+        wait.until(ExpectedConditions.elementToBeClickable(place1));
+        place1.clear();
+        place1.sendKeys(place + Keys.ENTER);
+    }
+}
